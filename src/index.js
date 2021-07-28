@@ -29,7 +29,8 @@ app.get('/search', (req, res) => {
   res.render('search')
 })
 app.post('/search', (req, res) => {
-  res.render('search')
+  console.log(req.query.q);
+  res.render('search');
 })
 
 
