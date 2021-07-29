@@ -7,6 +7,12 @@ const handlebars  = require('express-handlebars');
 
 app.use(express.static(path.join(__dirname,'public')));
 
+// support post data
+app.use(express.urlencoded({  // middle ware xu ly submit data
+  extended: true
+}));
+app.use(express.json());
+
 // HTTP logger
 app.use(morgan('combined'))
 //Template engine
@@ -29,9 +35,9 @@ app.get('/search', (req, res) => {
   res.render('search')
 })
 app.post('/search', (req, res) => {
-  console.log(req.query.q);
-  res.render('search');
-})
 
+  console.log(req.body);
+  res.send('')
+})
 
 app.listen(port, () => {console.log(`Example app listening at http://localhost:${port}`)})
